@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CurrencyExchangeController {
-	
+
 	@Autowired
 	private Environment environment;
-	
+
 	@GetMapping("/currency-exchange/from/{from}/to/{to}")
 	public ExchangeValue retrieveExchangeValue(@PathVariable String from, @PathVariable String to) {
-	ExchangeValue exchangeValue= new ExchangeValue(100L,from,to,BigDecimal.valueOf(65));
-	exchangeValue.setPort(Integer.parseInt(environment.getProperty("local.server.port")));
-	return exchangeValue ;
-	
+		ExchangeValue exchangeValue = new ExchangeValue(100L, from, to, BigDecimal.valueOf(65));
+		exchangeValue.setPort(Integer.parseInt(environment.getProperty("local.server.port")));
+		return exchangeValue;
+
 	}
 }
